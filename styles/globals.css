@@ -34,6 +34,17 @@ li{
   color: white !important;
 }
 
+body {
+  background: #f5f8fa !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
 #footer a {
   text-decoration: none;
   color: white !important;

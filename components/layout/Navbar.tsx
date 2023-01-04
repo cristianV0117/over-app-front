@@ -4,7 +4,9 @@ const Navbar = () => {
     return (
         <nav id="navbar" className="navbar navbar-expand-lg navbar-dark bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Inicio</a>
+                <Link className="navbar-brand" href="/">
+                    Inicio
+                </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -17,7 +19,7 @@ const Navbar = () => {
                                 Usuario
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <Link style={{ textDecoration: 'none' }} href={'login'}>
+                                <Link style={{ textDecoration: 'none' }} href="/login">
                                     <li className="dropdown-item">Ingresar</li>
                                 </Link>
                                 <li><a className="dropdown-item" href="#">Registrarme</a></li>

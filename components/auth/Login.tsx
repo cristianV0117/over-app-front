@@ -86,61 +86,59 @@ const Login: React.FC<Props> = ({...Props}) => {
     }
 
     return (
-        <>
-            <div className="container col-md-12 mt-3">
-                <div className="card shadow-lg">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Image
-                                src={loginImage}
-                                alt="login"
-                                className="img-fluid"
-                            />
-                        </div>
-                        <div className="col-md-6 mt-5 default text-center">
-                            <div className="col-md-10 mt-5 mr-4">
-                                <p className='text-center h4'>Ingresa &#x1F642;</p>
-                                <form onSubmit={onSubmitHandler} className="mt-4 needs-validation">
-                                    <label><h5>Tu email o nombre de usuario</h5></label>
-                                    <div className="input-group mb-3">
-                                        <span className="input-group-text" id="basic-addon1">@</span>
-                                        <input
-                                            id="user"
-                                            name="user_name"
-                                            placeholder="usuario..."
-                                            type="text"
-                                            className="form-control"
-                                            onChange={e => setUserName(e.target.value)}
-                                            required
-                                        />
-                                    </div>
-                                    <label className="mt-2"><h5>Contraseña</h5></label>
-                                    <div className="input-group mb-3">
-                                        <span className="input-group-text" id="basic-addon1">@</span>
-                                        <input
-                                            id="password"
-                                            name="password"
-                                            placeholder="contraseña..."
-                                            type="password"
-                                            className="form-control"
-                                            onChange={e => setPassword(e.target.value)}
-                                            required
-                                        />
-                                    </div>
-                                    <small id="passwordDangerMessage" className="text-danger">
+        <div className="container col-md-12 mt-3">
+            <div className="card shadow-lg">
+                <div className="row">
+                    <div className="col-md-6">
+                        <Image
+                            src={loginImage}
+                            alt="login"
+                            className="img-fluid"
+                        />
+                    </div>
+                    <div className="col-md-6 mt-5 default text-center">
+                        <div className="col-md-10 mt-5 mr-4">
+                            <p className='text-center h4'>Ingresa &#x1F642;</p>
+                            <form onSubmit={onSubmitHandler} className="mt-4 needs-validation">
+                                <label><h5>Tu email o nombre de usuario</h5></label>
+                                <div className="input-group mb-3">
+                                    <span className="input-group-text" id="basic-addon1">@</span>
+                                    <input
+                                        id="user"
+                                        name="user_name"
+                                        placeholder="usuario..."
+                                        type="text"
+                                        className="form-control"
+                                        onChange={e => setUserName(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <label className="mt-2"><h5>Contraseña</h5></label>
+                                <div className="input-group mb-3">
+                                    <span className="input-group-text" id="basic-addon1">@</span>
+                                    <input
+                                        id="password"
+                                        name="password"
+                                        placeholder="contraseña..."
+                                        type="password"
+                                        className="form-control"
+                                        onChange={e => setPassword(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <small id="passwordDangerMessage" className="text-danger">
 
-                                    </small>
-                                    <div className="mt-4">
-                                        <button type="submit" className="btn btn-outline-primary" >Ingresar</button>
-                                        <button onClick={ForgotPassword} type="button" className="btn btn-outline-warning m-2" >Olvidé mi contraseña</button>
-                                    </div>
-                                </form>
-                            </div>
+                                </small>
+                                <div className="mt-4">
+                                    <button type="submit" className="btn btn-outline-primary" >Ingresar</button>
+                                    <button onClick={ForgotPassword} type="button" className="btn btn-outline-warning m-2" >Olvidé mi contraseña</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

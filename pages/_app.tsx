@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
     }, []);
 
     return (
-      <div className="layout">
+      <div className="layout mb-3">
           <Head>
               <meta name="viewport" content="width=device-width, initial-scale=1" />
               <title>Index</title>
@@ -23,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <Navbar />
           <Component {...pageProps} />
           <ToastContainer />
-          <Footer />
       </div>
   )
 }
