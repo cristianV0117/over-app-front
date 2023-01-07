@@ -1,12 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import type { AppProps } from 'next/app'
 import Head from "next/head"
 import {useEffect} from "react";
 import '../styles/globals.css';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
-import Footer from "../components/layout/Footer";
-import Navbar from "../components/layout/Navbar";
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
+import Navbar from "../components/layout/Navbar"
 
 export default function App({ Component, pageProps }: AppProps) {
 

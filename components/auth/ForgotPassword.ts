@@ -56,7 +56,7 @@ const ForgotPassword = () => {
 
     Swal.fire({
         title:'Escribe tu correo electronico &#x1F642;',
-        html: `<input type="text" id="login" class="swal2-input" placeholder="example@example.com">`,
+        html: `<input required type="text" id="login" class="swal2-input" placeholder="example@example.com">`,
         confirmButtonText: 'Envíar correo',
         focusConfirm: false,
         preConfirm: () => {

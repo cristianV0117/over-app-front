@@ -58,3 +58,13 @@ footer {
 #welcome-text {
   margin-right: 5%;
 }
+
+.offcanvas {
+  width: 25% !important;
+}
+
+@media only screen and (max-width: 1000px) {
+  .offcanvas {
+    width: 100% !important;
+  }
+}

@@ -51,12 +51,12 @@ const ResetPasswordComponent: React.FC<props> = ({...props}) => {
                         <input
                             type="password"
                             placeholder="Nueva contraseña"
-                            className="form-control"
+                            className="form-control shadow"
                             required
                             onChange={e => setNewPassword(e.target.value)}
                         />
                         <div className="text-center mt-3">
-                            <button className="btn btn-outline-primary" >Actualizar</button>
+                            <button className="btn btn-outline-primary shadow" >Actualizar</button>
                         </div>
                     </form>
                 </div>

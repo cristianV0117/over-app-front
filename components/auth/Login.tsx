@@ -7,6 +7,7 @@ import { useCookies } from "react-cookie"
 import Router from "next/router"
 import swal from 'sweetalert2'
 import ForgotPassword from "./ForgotPassword";
+import Swal from "sweetalert2";
 
 interface Props {
     API?: string,
@@ -18,6 +19,14 @@ const Login: React.FC<Props> = ({...Props}) => {
     const [user_name, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [authCookie, setAuthCookie] = useCookies(["jwt"])
+    const [authUserCookie, setUserCookie] = useCookies([
+        "id",
+        "user_name",
+        "email",
+        "rol_id",
+        "rol",
+        "auth_status"
+    ])
 
     const validator = (
         credentials: any
@@ -59,8 +68,15 @@ const Login: React.FC<Props> = ({...Props}) => {
             return
         }
 
+        Swal.fire({
+            title:`<div class="spinner-border text-primary"></div>`,
+            scrollbarPadding: false,
+            showConfirmButton: false
+        }).then(r => true)
+
         // @ts-ignore
         request('login', dataRequest, "POST").then(response => {
+            Swal.hideLoading()
             if (200 != response.status || response.error) {
                 swal.fire({
                     title: '¡Oh no! 😔',
@@ -78,11 +94,21 @@ const Login: React.FC<Props> = ({...Props}) => {
                 timer: 2000,
                 showConfirmButton: false
             }).then(r => true)
-            setAuthCookie("jwt", response.message.jwt)
+            setCookies(response)
             setTimeout(() => {
                 Router.push('admin/dashboard').then(r => true)
             }, 1800)
         })
+    }
+
+    const setCookies = (response: any) => {
+        setAuthCookie("jwt", response.message.jwt)
+        setUserCookie("id", response.message.id)
+        setUserCookie("user_name", response.message.user_name)
+        setUserCookie("email", response.message.email)
+        setUserCookie("rol_id", response.message.roles.id)
+        setUserCookie("rol", response.message.roles.name)
+        setUserCookie("auth_status", true)
     }
 
     return (
@@ -108,7 +134,7 @@ const Login: React.FC<Props> = ({...Props}) => {
                                         name="user_name"
                                         placeholder="usuario..."
                                         type="text"
-                                        className="form-control"
+                                        className="form-control shadow"
                                         onChange={e => setUserName(e.target.value)}
                                         required
                                     />
@@ -121,7 +147,7 @@ const Login: React.FC<Props> = ({...Props}) => {
                                         name="password"
                                         placeholder="contraseña..."
                                         type="password"
-                                        className="form-control"
+                                        className="form-control shadow"
                                         onChange={e => setPassword(e.target.value)}
                                         required
                                     />
@@ -130,8 +156,8 @@ const Login: React.FC<Props> = ({...Props}) => {
 
                                 </small>
                                 <div className="mt-4">
-                                    <button type="submit" className="btn btn-outline-primary" >Ingresar</button>
-                                    <button onClick={ForgotPassword} type="button" className="btn btn-outline-warning m-2" >Olvidé mi contraseña</button>
+                                    <button type="submit" className="btn btn-outline-primary shadow" >Ingresar</button>
+                                    <button onClick={ForgotPassword} type="button" className="btn btn-outline-warning m-2 shadow" >Olvidé mi contraseña</button>
                                 </div>
                             </form>
                         </div>
