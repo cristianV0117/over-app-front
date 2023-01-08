@@ -1,10 +1,10 @@
 import Link from "next/link"
 import SideBar from "./SideBar"
 import { useCookies } from "react-cookie"
-import {useEffect, useState} from "react";
+import {useEffect, useState} from "react"
 
 const Navbar = () => {
-    const [cookies, setCookie] = useCookies();
+    const [cookies, setCookie] = useCookies()
     const [mounted, setMounted] = useState()
 
     useEffect(() => {

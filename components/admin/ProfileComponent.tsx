@@ -1,22 +1,48 @@
+import { useCookies } from "react-cookie"
+import {useEffect, useState} from "react"
 const ProfileComponent = () => {
+    const [cookies, setCookie] = useCookies()
+    const [mounted, setMounted] = useState()
+
+    useEffect(() => {
+        // @ts-ignore
+        setMounted(true)
+        // @ts-ignore
+        return () => setMounted(false)
+    }, []);
+
     return (
         <>
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-            </button>
             <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Editar perfil</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            ...
+                            <ul className="list-group fw-bold">
+                                <li className="list-group-item d-flex justify-content-between align-items-center">
+                                    Nombre
+                                    <div className="col-md-6">
+                                        <input type="text" className="form-control" placeholder={ (mounted && cookies.user_name) && cookies.user_name }  />
+                                    </div>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center">
+                                    Email
+                                    <div className="col-md-6">
+                                        <input type="text" className="form-control" placeholder={  (mounted && cookies.email) && cookies.email  }  />
+                                    </div>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center">
+                                    Rol
+                                    <h5><span className="badge bg-success rounded-pill">{ (mounted && cookies.rol) && cookies.rol }</span></h5>
+                                </li>
+                            </ul>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" className="btn btn-outline-primary">Guardar cambios</button>
                         </div>
                     </div>
                 </div>
