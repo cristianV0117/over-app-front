@@ -102,12 +102,19 @@ const Login: React.FC<Props> = ({...Props}) => {
     }
 
     const setCookies = (response: any) => {
+        let roles = [];
+        roles = response.message.roles.map((value: any) => {
+            return [
+                value.id,
+                value.name
+            ]
+        })
         setAuthCookie("jwt", response.message.jwt)
         setUserCookie("id", response.message.id)
         setUserCookie("user_name", response.message.user_name)
         setUserCookie("email", response.message.email)
         setUserCookie("rol_id", response.message.roles.id)
-        setUserCookie("rol", response.message.roles.name)
+        setUserCookie("rol", JSON.stringify(roles))
         setUserCookie("auth_status", true)
     }
 

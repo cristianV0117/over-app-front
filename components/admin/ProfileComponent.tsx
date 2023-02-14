@@ -35,12 +35,25 @@ const ProfileComponent = () => {
                                     </div>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between align-items-center">
-                                    Rol
-                                    <h5><span className="badge bg-success rounded-pill">{ (mounted && cookies.rol) && cookies.rol }</span></h5>
+                                    Roles del usuario
+                                    <ul>
+                                    {
+                                        cookies.rol?.map((value: any) => (
+
+                                            <li>
+                                                <h5>
+                                                    <span className="badge bg-success rounded-pill">{ value[1] }</span>
+                                                </h5>
+                                            </li>
+
+                                        ))
+                                    }
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
                         <div className="modal-footer">
+                            <button type="button" className="btn btn-outline-success" data-bs-dismiss="modal">Editar Roles</button>
                             <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
                             <button type="button" className="btn btn-outline-primary">Guardar cambios</button>
                         </div>
